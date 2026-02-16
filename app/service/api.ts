@@ -1,35 +1,35 @@
 // Check this URL! It must match your backend server's address.
 // Common ports are 8080, 5000, or 3001.
 
-import { BlogPost } from "@/types/schema";
+import { BlogPost, Course } from "@/types/schema";
 import dbData from '../data/data.json'; // 
 
 // --------------------------------------------------------
 // Course Services
 // --------------------------------------------------------
 
-export const getAllCourses = async () => {
+export const getAllCourses = async (): Promise<Course[]> => {
   // จำลองการรอข้อมูลนิดหน่อย (Optional) หรือ return เลยก็ได้
   // return dbData.courses; 
   
   // ถ้าอยากให้เหมือนโหลดจริง (Async)
   return new Promise((resolve) => {
-    setTimeout(() => resolve(dbData.courses), 100);
+    setTimeout(() => resolve(dbData.courses as Course[]), 100);
   });
 };
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<string[]> => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(dbData.categories), 100);
   });
 };
 
-export const getCourseById = async (id: string) => {
+export const getCourseById = async (id: string): Promise<Course | null> => {
   // ค้นหาข้อมูลจาก Array โดยตรง
   const course = dbData.courses.find((c: any) => c.id === id);
   
   return new Promise((resolve) => {
-    setTimeout(() => resolve(course || null), 100);
+    setTimeout(() => resolve((course as Course) || null), 100);
   });
 };
 
@@ -47,7 +47,7 @@ export const getAllBlogs = async (): Promise<BlogPost[]> => {
 export const getBlogById = async (id: string): Promise<BlogPost | null> => {
    // ถ้ามีข้อมูล blogs
    // const blog = dbData.blogs.find((b: any) => b.id === id);
-   // return blog || null;
+   //return blog || null;
    return null;
 };
 // {// If you are using Next.js API routes, use '/api'
