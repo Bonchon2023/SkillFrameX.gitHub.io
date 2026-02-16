@@ -1,0 +1,139 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "name": "JavaScript Fundamentals",
+      "description": "เรียนรู้พื้นฐาน JavaScript ตั้งแต่เริ่มต้น รวมถึง Variables, Functions, Arrays, Objects และอื่นๆ",
+      "category": "Programming",
+      "image": "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400",
+      "coursesDtl": [
+        { "id": "1-1", "title": "Introduction to JavaScript", "duration": "30 min" },
+        { "id": "1-2", "title": "Variables and Data Types", "duration": "45 min" },
+        { "id": "1-3", "title": "Functions", "duration": "60 min" }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "React.js for Beginners",
+      "description": "เรียนรู้การสร้างเว็บแอปพลิเคชันด้วย React.js ตั้งแต่เริ่มต้นจนถึงระดับกลาง",
+      "category": "Programming",
+      "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
+      "coursesDtl": [
+        { "id": "2-1", "title": "What is React?", "duration": "20 min" },
+        { "id": "2-2", "title": "Components & Props", "duration": "50 min" },
+        { "id": "2-3", "title": "State & Lifecycle", "duration": "60 min" },
+        { "id": "2-4", "title": "Hooks", "duration": "90 min" }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Next.js Full Course",
+      "description": "สร้างเว็บแอปพลิเคชันแบบ Full-Stack ด้วย Next.js พร้อม Server-Side Rendering",
+      "category": "Programming",
+      "image": "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=400",
+      "coursesDtl": [
+        { "id": "3-1", "title": "Next.js Introduction", "duration": "25 min" },
+        { "id": "3-2", "title": "Pages & Routing", "duration": "40 min" },
+        { "id": "3-3", "title": "API Routes", "duration": "55 min" }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "UI/UX Design Basics",
+      "description": "หลักการออกแบบ UI/UX เบื้องต้น สำหรับผู้เริ่มต้นที่ต้องการเข้าใจการออกแบบ",
+      "category": "Design",
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400",
+      "coursesDtl": [
+        { "id": "4-1", "title": "What is UI/UX?", "duration": "30 min" },
+        { "id": "4-2", "title": "Design Principles", "duration": "45 min" },
+        { "id": "4-3", "title": "Color Theory", "duration": "35 min" }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Figma Masterclass",
+      "description": "เรียนรู้การใช้งาน Figma อย่างเชี่ยวชาญ สำหรับการออกแบบ UI",
+      "category": "Design",
+      "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=400",
+      "coursesDtl": [
+        { "id": "5-1", "title": "Figma Interface", "duration": "20 min" },
+        { "id": "5-2", "title": "Components & Variants", "duration": "60 min" },
+        { "id": "5-3", "title": "Prototyping", "duration": "50 min" }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Python for Data Science",
+      "description": "เรียนรู้ Python สำหรับงาน Data Science รวมถึง Pandas, NumPy และ Matplotlib",
+      "category": "Data Science",
+      "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400",
+      "coursesDtl": [
+        { "id": "6-1", "title": "Python Basics", "duration": "45 min" },
+        { "id": "6-2", "title": "Pandas Introduction", "duration": "60 min" },
+        { "id": "6-3", "title": "Data Visualization", "duration": "55 min" }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Machine Learning 101",
+      "description": "พื้นฐาน Machine Learning สำหรับผู้เริ่มต้น เรียนรู้ Algorithms และการประยุกต์ใช้",
+      "category": "Data Science",
+      "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400",
+      "coursesDtl": [
+        { "id": "7-1", "title": "What is ML?", "duration": "30 min" },
+        { "id": "7-2", "title": "Supervised Learning", "duration": "70 min" },
+        { "id": "7-3", "title": "Model Evaluation", "duration": "45 min" }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Digital Marketing",
+      "description": "เรียนรู้กลยุทธ์การตลาดดิจิทัล SEO, Social Media และ Content Marketing",
+      "category": "Marketing",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
+      "coursesDtl": [
+        { "id": "8-1", "title": "Marketing Fundamentals", "duration": "35 min" },
+        { "id": "8-2", "title": "SEO Basics", "duration": "50 min" },
+        { "id": "8-3", "title": "Social Media Strategy", "duration": "45 min" }
+      ]
+    }
+  ],
+  "categories": [
+    "Programming",
+    "Design",
+    "Data Science",
+    "Marketing"
+  ],
+"blogs": [
+    {
+      "id": "1",
+      "title": "Why React is Essential for 2024",
+      "excerpt": "Discover why React remains the top choice for frontend developers.",
+      "content": "React has revolutionized the way we build user interfaces...",
+      "author": "John Doe",
+      "date": "Oct 12, 2023",
+      "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800",
+      "tags": ["Frontend", "React"]
+    },
+    {
+      "id": "2",
+      "title": "Mastering CSS Grid",
+      "excerpt": "Stop struggling with layout. Learn the secrets of modern CSS.",
+      "content": "CSS Grid is a powerful tool...",
+      "author": "Jane Smith",
+      "date": "Nov 05, 2023",
+      "image": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800",
+      "tags": ["CSS", "Design"]
+    },
+    {
+      "id": "3",
+      "title": "Backend Roadmap",
+      "excerpt": "A step-by-step guide to becoming a backend developer.",
+      "content": "Starting with Node.js...",
+      "author": "Mike Johnson",
+      "date": "Dec 20, 2023",
+      "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800",
+      "tags": ["Backend", "Node.js"]
+    }
+  ]
+}
