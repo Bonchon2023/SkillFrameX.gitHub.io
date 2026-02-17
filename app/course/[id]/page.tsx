@@ -21,7 +21,13 @@ export default function CourseDetailPage() {
   useEffect(() => {
     if (id) {
       getCourseById(id)
-        .then((data) => setCourse(data))
+        .then((data) => {
+          setCourse(data);
+          // ✅ ย้ายมาไว้ข้างใน .then() เพื่อให้มีตัวแปร data ใช้
+          if (data) {
+            document.title = `${data.name} - SkillFrameX`;
+          }
+        })
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }

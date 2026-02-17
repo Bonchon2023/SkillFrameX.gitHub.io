@@ -19,6 +19,7 @@ export default function AccountPage() {
     const { completedLessons, enrolledCourses } = useProgress();
 
     useEffect(() => {
+        document.title = "My Account - SkillFrameX";
         getAllCourses()
             .then(setCourses)
             .catch((err) => console.error(err))
