@@ -18,7 +18,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     --text: #120f0c;
     --background: #d7eef9;
@@ -26,7 +26,8 @@
     --secondary: #5e9497;
     --accent: #0c0d0d;
   }
-}
+} */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #f3f0ed;
