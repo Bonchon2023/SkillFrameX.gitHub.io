@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "SkillFrameX", // เปลี่ยนชื่อที่แสดงบน Tab
   description: "SkillFrameX Online Learning Platform", // คำอธิบายเว็บไซต์สำหรับการทำ SEO
   icons: {
-    icon: "SquareCode", // 
+    icon: SquareCode, // 
   },
 };
 
