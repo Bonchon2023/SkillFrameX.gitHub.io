@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Search, Menu, X, GraduationCap } from "lucide-react"; // นำเข้าไอคอนจาก Library
+import { Search, Menu, X, SquareCode } from "lucide-react"; // นำเข้าไอคอนจาก Library
 
 // --- ส่วนที่ 1: Main Logic Component (NavBarContent) ---
 function NavBarContent() {
@@ -47,7 +47,7 @@ function NavBarContent() {
           {/* ✅ 5.1: Logo Section - แสดงชื่อแบรนด์และลิงก์กลับหน้าแรก */}
           <Link href="/" className="flex items-center gap-2 group"> 
             <div className="bg-secondary/10 p-2 rounded-lg group-hover:bg-secondary/20 transition-colors">
-              <GraduationCap className="h-6 w-6 text-secondary" />
+              <SquareCode className="h-6 w-6 text-secondary" />
             </div>
             <span className="text-xl font-bold bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent">
               SkillFrameX
