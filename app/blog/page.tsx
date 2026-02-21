@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, User, ArrowRight } from "lucide-react"; // นำเข้าไอคอนเพื่อใช้ใน UI
-import { getAllBlogs } from "@/app/service/api"; // การเรียกฟังก์ชันที่เขียนไว้สำหรับดึงข้อมูลจาก Back-end (API)
-import { BlogPost } from "@/types/schema"; // การใช้ Type เพื่อความแม่นยำของข้อมูลตามหลัก TypeScript
+import { Calendar, User, ArrowRight } from "lucide-react";
+import { getAllBlogs } from "@/app/service/api";
+import { BlogPost } from "@/types/schema";
 
 export default function BlogPage() {
   // --- ส่วนที่ 1: State Management (การจัดการสถานะภายใน) ---
@@ -28,7 +28,7 @@ export default function BlogPage() {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        {/* --- ส่วนที่ 3: Page Header (ส่วนหัวของหน้า) --- */}
+        {/* --- ส่วนที่ 3: Page Header --- */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-cyan-400">Latest Articles</span>
@@ -43,7 +43,6 @@ export default function BlogPage() {
         {loading && <div className="text-center text-white">Loading articles...</div>}
 
         {/* --- ส่วนที่ 5: Blog Grid (ส่วนแสดงผลรายการบทความ) --- */}
-        {/* ใช้ระบบ Grid ในการจัดเรียงการ์ดบทความให้ Responsive ตามขนาดหน้าจอ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* ใช้การ .map() เพื่อวนลูปสร้างการ์ดบทความตามจำนวนข้อมูลที่มีใน blogs */}
           {blogs.map((blog) => (
@@ -55,10 +54,10 @@ export default function BlogPage() {
                   src={blog.image} 
                   alt={blog.title} 
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500" // เอฟเฟกต์ซูมภาพเมื่อ Hover
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                {/* วนลูปแสดง Tags ของบทความนั้นๆ */}
+                {/* วนลูปแสดง Tags ของบทความนั้น ๆ */}
                 <div className="absolute top-4 left-4 flex gap-2">
                   {blog.tags.map(tag => (
                     <span key={tag} className="bg-slate-900/80 backdrop-blur-sm text-cyan-400 text-xs font-bold px-2 py-1 rounded-md">
@@ -83,8 +82,6 @@ export default function BlogPage() {
                 <p className="text-slate-400 text-sm mb-4 line-clamp-3 flex-1">
                   {blog.excerpt}
                 </p>
-
-                {/* ส่วนปุ่มลิงก์สำหรับไปหน้าเนื้อหาเต็ม (Call to Action) */}
                 <Link 
                   href={`/blog/${blog.id}`} 
                   className="inline-flex items-center text-cyan-400 font-semibold text-sm hover:text-cyan-300 transition-colors mt-auto"

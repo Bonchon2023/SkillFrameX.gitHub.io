@@ -2,14 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-// import Image เอาออกได้เลยเพราะไม่ได้ใช้ในหน้านี้แล้ว (ไปอยู่ใน CourseCard แทน)
-import { User, BookOpen, Trophy, Target, PlayCircle, CheckCircle } from "lucide-react";
+import { User, BookOpen, Target, PlayCircle, CheckCircle } from "lucide-react";
 import { getAllCourses } from "@/app/service/api";
 import { Course } from "@/types/schema";
 import { useProgress } from "@/app/hook/useProgress";
-
-// ✅ 1. Import Component กลางเข้ามาใช้
 import CourseCard from "@/app/components/CourseCard";
+
+interface CourseWithProgress extends Course {
+    progress: number;
+    completedCount: number;
+    totalLessons: number;
+}
 
 export default function AccountPage() {
     const [courses, setCourses] = useState<Course[]>([]);
@@ -26,29 +29,28 @@ export default function AccountPage() {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <div className="min-h-screen bg-background text-[var(--text)] flex items-center justify-center">Loading profile...</div>;
+    if (loading) return <div className="min-h-screen bg-background text-foreground flex items-center justify-center">Loading profile...</div>;
 
-    // --- Logic คำนวณ Progress ---
-    const myEnrolledCourses = courses.filter(course => enrolledCourses.includes(course.id));
+    // --- Logic Progress ---
+    const myEnrolledCourses = courses.filter((course: Course) => enrolledCourses.includes(course.id));
 
-    // ตรงนี้สำคัญ! เราคำนวณ Progress และ TotalLessons เพื่อส่งไปให้ CourseCard Component
-    const processedCourses = myEnrolledCourses.map((course) => {
+    // calculate progress and total completed lessons for each course
+    const processedCourses: CourseWithProgress[] = myEnrolledCourses.map((course: Course) => {
         const totalLessons = course.coursesDtl.length;
-        const completedCount = course.coursesDtl.filter((l) => completedLessons.includes(l.id)).length;
+        const completedCount = course.coursesDtl.filter((l: { id: string }) => completedLessons.includes(l.id)).length;
         const progress = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
-        // Return Object ที่รวมค่า Progress ไปด้วย (ตรงตาม Interface ใหม่ของ CourseCard)
         return { ...course, progress, completedCount, totalLessons };
     });
 
-    const inProgressCourses = processedCourses.filter(c => c.progress < 100);
-    const completedCoursesList = processedCourses.filter(c => c.progress === 100);
+    const inProgressCourses = processedCourses.filter((c) => c.progress < 100);
+    const completedCoursesList = processedCourses.filter((c) => c.progress === 100);
     const totalCertificates = completedCoursesList.length;
     const totalLessonsDone = completedLessons.length;
 
     // --- Data Pie Chart ---
     const categoryCounts: Record<string, number> = {};
-    myEnrolledCourses.forEach(c => {
+    myEnrolledCourses.forEach((c: Course) => {
         categoryCounts[c.category] = (categoryCounts[c.category] || 0) + 1;
     });
     const totalEnrolled = myEnrolledCourses.length;
@@ -63,7 +65,7 @@ export default function AccountPage() {
         <div className="min-h-screen bg-background text-foreground pb-20 font-sans">
 
             {/* --- Banner Section --- */}
-            <div className="relative h-40 md:h-48 w-full overflow-hidden bg-gradient-to-r from-primary to-background">
+            <div className="relative h-40 md:h-48 w-full overflow-hidden bg-linear-to-r from-primary to-background">
                 <div className="absolute inset-0 opacity-30">
                     <svg className="w-full h-full text-secondary/50" viewBox="0 0 1440 320" preserveAspectRatio="none">
                         <path fill="currentColor" fillOpacity="0.5" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -95,9 +97,6 @@ export default function AccountPage() {
 
                         <div className="flex-1 flex flex-col justify-end mt-4 md:mt-0">
                             <div className="grid grid-cols-3 gap-2 md:flex md:gap-8 items-center mb-6 pb-6 border-b border-white/10">
-                                <div className="flex flex-col md:flex-row items-center gap-1.5 text-yellow-500">
-                                    <Trophy size={18} /> <span className="font-bold text-white text-sm md:text-base">1,250 XP</span>
-                                </div>
                                 <div className="flex flex-col md:flex-row items-center gap-1.5 text-secondary">
                                     <BookOpen size={18} /> <span className="font-bold text-white text-sm md:text-base">{totalLessonsDone} Lessons</span>
                                 </div>
@@ -113,7 +112,7 @@ export default function AccountPage() {
                                 <div>
                                     <p className="text-xs text-slate-400 font-bold uppercase mb-1">Current Goal</p>
                                     <p className="text-sm font-medium text-white max-w-md">
-                                        &quot;Become a Full Stack Developer by the end of 2024&quot;
+                                        &quot;Become a Full Stack Developer by the end of 2026&quot;
                                     </p>
                                 </div>
                             </div>
@@ -125,7 +124,7 @@ export default function AccountPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
                     {/* Left: Lessons Activity */}
-                    <div className="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col h-[340px] backdrop-blur-md">
+                    <div className="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col h-85 backdrop-blur-md">
                         <div className="flex justify-between items-start mb-4">
                             <div>
                                 <h3 className="text-lg font-bold text-white">Lesson Activity</h3>
@@ -160,7 +159,7 @@ export default function AccountPage() {
                     </div>
 
                     {/* Right: Interested Categories */}
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col h-[340px] backdrop-blur-md">
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col h-85 backdrop-blur-md">
                         <h3 className="text-lg font-bold text-white mb-4">Interests</h3>
                         <div className="flex-1 flex flex-col items-center justify-center min-h-0">
                             {pieData.length > 0 ? (
@@ -222,13 +221,13 @@ export default function AccountPage() {
                         {activeTab === "learning" ? (
                             inProgressCourses.length > 0 ? (
                                 // ✅ 2. เรียกใช้ CourseCard โดยส่งค่า course ที่มี progress เข้าไป
-                                inProgressCourses.map(course => <CourseCard key={course.id} course={course} />)
+                                inProgressCourses.map((course) => <CourseCard key={course.id} course={course} />)
                             ) : (
                                 <EmptyState message="No active courses." linkText="Browse Courses" />
                             )
                         ) : (
                             completedCoursesList.length > 0 ? (
-                                completedCoursesList.map(course => <CourseCard key={course.id} course={course} />)
+                                completedCoursesList.map((course) => <CourseCard key={course.id} course={course} />)
                             ) : (
                                 <EmptyState message="No completed courses yet." linkText="Keep learning!" />
                             )
